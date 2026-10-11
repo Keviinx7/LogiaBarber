@@ -1,0 +1,146 @@
+{
+  "python": "3.14.7",
+  "python_executable": "/home/kevin7/Documentos/DannyBarber/backend/.venv/bin/python",
+  "alembic": "1.20.0",
+  "cwd": "/home/kevin7/Documentos/DannyBarber/backend",
+  "timestamp_utc": "2026-10-05T03:04:06.385201+00:00",
+  "normal_before": {
+    "database": "danny_barber",
+    "postgresql": "18.6",
+    "revisions": [
+      "0002_overlap_constraint"
+    ],
+    "appointment_constraints": [
+      [
+        "appointments_client_name_not_null",
+        "NOT NULL client_name"
+      ],
+      [
+        "appointments_client_phone_not_null",
+        "NOT NULL client_phone"
+      ],
+      [
+        "appointments_created_at_not_null",
+        "NOT NULL created_at"
+      ],
+      [
+        "appointments_ends_at_not_null",
+        "NOT NULL ends_at"
+      ],
+      [
+        "appointments_id_not_null",
+        "NOT NULL id"
+      ],
+      [
+        "appointments_pkey",
+        "PRIMARY KEY (id)"
+      ],
+      [
+        "appointments_service_id_fkey",
+        "FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE RESTRICT"
+      ],
+      [
+        "appointments_service_id_not_null",
+        "NOT NULL service_id"
+      ],
+      [
+        "appointments_starts_at_not_null",
+        "NOT NULL starts_at"
+      ],
+      [
+        "appointments_status_not_null",
+        "NOT NULL status"
+      ],
+      [
+        "appointments_updated_at_not_null",
+        "NOT NULL updated_at"
+      ],
+      [
+        "ck_appointments_status",
+        "CHECK (((status)::text = ANY ((ARRAY['pending'::character varying, 'confirmed'::character varying, 'completed'::character varying, 'cancelled'::character varying, 'no_show'::character varying])::text[])))"
+      ],
+      [
+        "ck_appointments_time_order",
+        "CHECK ((ends_at > starts_at))"
+      ],
+      [
+        "ex_appointments_active_time_overlap",
+        "EXCLUDE USING gist (tstzrange(starts_at, ends_at, '[)'::text) WITH &&) WHERE (((status)::text = ANY ((ARRAY['pending'::character varying, 'confirmed'::character varying])::text[])))"
+      ]
+    ],
+    "appointment_count": 1
+  },
+  "target_existed_before": false,
+  "failure": {
+    "type": "InsufficientPrivilege",
+    "sqlstate": "42501"
+  },
+  "normal_after": {
+    "database": "danny_barber",
+    "postgresql": "18.6",
+    "revisions": [
+      "0002_overlap_constraint"
+    ],
+    "appointment_constraints": [
+      [
+        "appointments_client_name_not_null",
+        "NOT NULL client_name"
+      ],
+      [
+        "appointments_client_phone_not_null",
+        "NOT NULL client_phone"
+      ],
+      [
+        "appointments_created_at_not_null",
+        "NOT NULL created_at"
+      ],
+      [
+        "appointments_ends_at_not_null",
+        "NOT NULL ends_at"
+      ],
+      [
+        "appointments_id_not_null",
+        "NOT NULL id"
+      ],
+      [
+        "appointments_pkey",
+        "PRIMARY KEY (id)"
+      ],
+      [
+        "appointments_service_id_fkey",
+        "FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE RESTRICT"
+      ],
+      [
+        "appointments_service_id_not_null",
+        "NOT NULL service_id"
+      ],
+      [
+        "appointments_starts_at_not_null",
+        "NOT NULL starts_at"
+      ],
+      [
+        "appointments_status_not_null",
+        "NOT NULL status"
+      ],
+      [
+        "appointments_updated_at_not_null",
+        "NOT NULL updated_at"
+      ],
+      [
+        "ck_appointments_status",
+        "CHECK (((status)::text = ANY ((ARRAY['pending'::character varying, 'confirmed'::character varying, 'completed'::character varying, 'cancelled'::character varying, 'no_show'::character varying])::text[])))"
+      ],
+      [
+        "ck_appointments_time_order",
+        "CHECK ((ends_at > starts_at))"
+      ],
+      [
+        "ex_appointments_active_time_overlap",
+        "EXCLUDE USING gist (tstzrange(starts_at, ends_at, '[)'::text) WITH &&) WHERE (((status)::text = ANY ((ARRAY['pending'::character varying, 'confirmed'::character varying])::text[])))"
+      ]
+    ],
+    "appointment_count": 1
+  },
+  "target_exists_after": false,
+  "normal_snapshot_unchanged": true
+}

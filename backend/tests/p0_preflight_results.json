@@ -1,0 +1,49 @@
+{
+  "project": "Sistema de Gestión para Logia Barber",
+  "company": "Logia Barber",
+  "cwd": "/home/kevin7/Documentos/LogiaBarber/backend",
+  "timestamp_utc": "2026-10-05T03:27:06.331116+00:00",
+  "configured_database": "danny_barber",
+  "principal_is_not_target": true,
+  "env_sha256_before": "9929831963fe507406f8195ae066104ea1de5b46939b8bacd046f1c1a75d3cbf",
+  "preflight": "FAIL",
+  "error_type": "OperationalError",
+  "sqlstate": null,
+  "diagnostic_flags": {
+    "permission denied": false,
+    "connection refused": false,
+    "operation not permitted": false,
+    "password authentication failed": false,
+    "timeout": false,
+    "no such file or directory": false
+  },
+  "socket_diagnostic": {
+    "IPv4": "PermissionError: [Errno 1] Operation not permitted",
+    "IPv6": "PermissionError: [Errno 1] Operation not permitted",
+    "Unix": "socket creation succeeded; configured connection uses TCP localhost:5432"
+  },
+  "env_unchanged": true,
+  "runner": {
+    "command": ".venv/bin/python -B -m tests.run_p0_validation",
+    "exit_code": 1,
+    "result": "OperationalError before database catalog inspection",
+    "evidence": "tests/p0_validation_results.json"
+  },
+  "final_suite": {
+    "command": ".venv/bin/python -B -m pytest -q -p no:cacheprovider tests",
+    "cwd": "/home/kevin7/Documentos/LogiaBarber/backend",
+    "exit_code": 0,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 38,
+    "warnings": 3,
+    "duration_seconds": 1.5,
+    "postgresql_tests_executed": false,
+    "skip_reason": "P0_TEST_DATABASE_URL is unset",
+    "warnings_detail": [
+      "Starlette: httpx with TestClient deprecated (1)",
+      "Alembic: missing path_separator (2)"
+    ]
+  },
+  "status": "P0 BLOQUEADO"
+}
